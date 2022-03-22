@@ -1,0 +1,89 @@
+#include <stdio.h>
+/*
+	实现静态顺序栈
+*/
+#define STACK_MAX_SIZE	5
+typedef struct SSNode
+{
+	int stack_arr[STACK_MAX_SIZE];
+	int stack_top;
+}StaticStackNode;
+
+//判断栈是否为满
+int IsFullStaticStack(StaticStackNode *ptr)
+{
+	if (ptr->stack_top == STACK_MAX_SIZE - 1)
+	{
+		return 1;//栈为满
+	}
+	return 0;//栈为未满
+}
+
+//判断栈是否为空
+int IsEmptyStaticStack(StaticStackNode *ptr)
+{
+	if (ptr->stack_top == -1)
+	{
+		return 1;//栈为空
+	}
+	return 0;//栈为非空
+}
+
+//入栈
+void PushStaticStack(StaticStackNode *ptr, int value)
+{
+	if (IsFullStaticStack(ptr))
+	{
+		printf("栈满，入栈失败\n");
+		return;
+	}
+	
+	ptr->stack_top++;
+	ptr->stack_arr[ptr->stack_top] = value;
+	printf("入栈元素：%d\n", ptr->stack_arr[ptr->stack_top]);
+}
+
+//出栈
+void PopStaticStack(StaticStackNode *ptr, int *value)
+{
+	if (IsEmptyStaticStack(ptr))
+	{
+		printf("栈空，出栈失败\n");
+		return;
+	}
+
+	*value = ptr->stack_arr[ptr->stack_top];
+	ptr->stack_top--;
+	printf("出栈元素：%d\n", *value);
+}
+
+//获取栈顶元素
+void GetTopElement(StaticStackNode *ptr, int *top_value)
+{
+	if (IsEmptyStaticStack(ptr))
+	{
+		printf("栈空，获取失败\n");
+		return;
+	}
+	*top_value = ptr->stack_arr[ptr->stack_top];
+	printf("栈顶元素：%d\n", *top_value);
+}
+
+//遍历栈
+void PrintStaticStack(StaticStackNode *ptr)
+{
+	int value;
+	int i;
+	if (IsEmptyStaticStack(ptr))
+	{
+		printf("栈空，遍历失败\n");
+		return;
+	}
+	printf("当前元素：\n");
+	for(i = ptr->stack_top; i >= 0; i--)
+	{
+		value = ptr->stack_arr[i];
+		printf("%d ", value);
+	}
+	printf("\n");
+}
