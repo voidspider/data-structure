@@ -1,0 +1,34 @@
+int get(List *curr, int data){
+	int i=0;
+	while(curr->data != data){
+		curr = curr->next;
+		i++;
+	}
+	return i;
+}
+
+int get(List *curr, int i){
+	while(i>0){
+		curr = curr->next;
+		i--;
+	}
+	return curr->data;
+}
+
+void modify(List *curr,int position, int data){
+	while(i>0){
+		curr = curr->next;
+		i--;
+	}
+	curr->data = data;
+}
+
+void delete(List *curr, int i){
+	while(i>0){
+		curr = curr->next;
+		i--;
+	}
+	curr->next->prev = curr->prev;
+	curr->prev->next = vur->next;
+	delete[] curr;
+}
