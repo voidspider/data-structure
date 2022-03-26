@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 int get(List *curr, int data){
 	int i=0;
 	while(curr->data != data){
